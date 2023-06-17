@@ -1,0 +1,51 @@
+[tool.poetry]
+name = "acme-project"
+version = "0.1.0"
+description = "A small birthday app to tell one's day of birth or how soon."
+authors = ["Кирилл Кувшинов <k.koovshinov@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "acme_project"}]
+
+[tool.poetry.dependencies]
+python = "^3.9.10"
+django = "3.2.16"
+
+
+[tool.poetry.group.dev.dependencies]
+django-stubs = "^4.2.1"
+mypy = "^1.3.0"
+flake8 = "^6.0.0"
+ruff = "^0.0.272"
+
+[tool.mypy]
+mypy_path = "acme_project"
+plugins = ["mypy_django_plugin.main"]
+strict_optional = true
+
+[tool.django-stubs]
+django_settings_module = "acme_project.settings"
+
+
+[tool.ruff]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".git",
+    ".git-rewrite",
+    ".mypy_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+    "migrations"
+]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,1 @@
+A small birthday app to tell one's day of birth or how soon it'll be.
