@@ -38,6 +38,20 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-bootstrap5"
+version = "22.2"
+description = "Bootstrap 5 for Django"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "django-bootstrap5-22.2.tar.gz", hash = "sha256:e944f5ced342e0e16cde77e1ddacb4b9fd5bce4cc190df2f7da0b8e18a24c9cb"},
+    {file = "django_bootstrap5-22.2-py3-none-any.whl", hash = "sha256:5d677bbfb94207c1a034d63a5f39d95ce287ef509e0b31dfb4d233cc81f93bcc"},
+]
+
+[package.dependencies]
+Django = ">=3.2"
+
+[[package]]
 name = "django-stubs"
 version = "4.2.1"
 description = "Mypy stubs for Django"
@@ -281,4 +295,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9.10"
-content-hash = "6699c42cc1ad43069eba6ba29db4cfaac9fbd8cfc480d04d5a9796bd4dbaf678"
+content-hash = "3f144275234634e451b6b670ec68be1a4802bf9efb7f29cfa7edd125912e205c"
