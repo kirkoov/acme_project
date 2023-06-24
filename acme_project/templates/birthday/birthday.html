@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% load django_bootstrap5 %}
 {% block content %}
+{% with data=form.instance %}
+  {% if '/edit/' in request.path %}
+    <h1>Редактировать запись {{ data.pk }}</h1>
+  {% else %}
+    <h1>Создать запись</h1>
+  {% endif %}
 <div class="card col-4">
   <div class="card-header">
     Калькулятор ожидания дня рождения
@@ -13,7 +19,7 @@
     </form>
   </div>
 </div>
-{% with data=form.instance %}
+
   {% if form.is_valid %}
     ID новой записи в БД: {{ data.id }}
     <hr>
