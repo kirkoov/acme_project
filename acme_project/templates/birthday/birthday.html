@@ -19,16 +19,15 @@
     </form>
   </div>
 </div>
-
-  {% if form.is_valid %}
-    ID новой записи в БД: {{ data.id }}
-    <hr>
-    <h2>Привет, {{ data.first_name }} {{ data.last_name }}</h2>
-    {% if birthday_countdown == 0 %}
-        С днём рождения!
-    {% else %}
-        Осталось дней до дня рождения: {{ birthday_countdown }}!
-    {% endif %}
+{% if form.is_valid %}
+  ID новой записи в БД: {{ data.id }}
+  <hr>
+  <h2>Привет, {{ data.first_name }} {{ data.last_name }}</h2>
+  {% if birthday_countdown == 0 %}
+      С днём рождения!
+  {% else %}
+      Осталось дней до дня рождения: {{ birthday_countdown }}!
   {% endif %}
+{% endif %}
 {% endwith %}
 {% endblock %}
