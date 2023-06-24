@@ -4,6 +4,8 @@
 {% with data=form.instance %}
   {% if '/edit/' in request.path %}
     <h1>Редактировать запись {{ data.pk }}</h1>
+  {% elif '/delete/' in request.path %}
+      <h1>Удалить запись {{ data.pk }}</h1>
   {% else %}
     <h1>Создать запись</h1>
   {% endif %}
@@ -14,7 +16,12 @@
   <div class="card-body">
     <form method="post">
       {% csrf_token %}
-      {% bootstrap_form form %}
+      {% if '/delete/' not in request.path %}
+        {% bootstrap_form form %}
+      {% else %}
+        <p>{{ data.first_name }} {{ data.last_name }}</p>
+        <p>{{ data.birthday }}</p>
+      {% endif %}
       {% bootstrap_button button_type="submit" content="Отправить" %}
     </form>
   </div>

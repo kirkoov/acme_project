@@ -1,9 +1,20 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import BirthdayForm
 from .models import Birthday
 
 from .utils import calculate_birthday_countdown
+
+
+def delete_birthday(request, pk):
+    instance = get_object_or_404(Birthday, pk=pk)
+    form = BirthdayForm(instance=instance)
+    context = {'form': form}
+    if request.method == 'POST':
+        instance.delete()
+        return redirect('birthday:list')
+    # Если был получен GET-запрос, отображаем форму
+    return render(request, 'birthday/birthday.html', context)
 
 
 def birthday(request, pk=None):
