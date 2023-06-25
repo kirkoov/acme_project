@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     'birthday.apps.BirthdayConfig',
     'pages.apps.PagesConfig',
     'django_bootstrap5',
+    'django_cleanup.apps.CleanupConfig'  # should be placed last
 ]
 
 MIDDLEWARE = [
@@ -92,3 +93,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MEDIA_ROOT = BASE_DIR / 'media'

@@ -2,19 +2,19 @@
 {% load django_bootstrap5 %}
 {% block content %}
 {% with data=form.instance %}
-  {% if '/edit/' in request.path %}
-    <h1>Редактировать запись {{ data.pk }}</h1>
+  <h1>{% if '/edit/' in request.path %}
+    Редактировать запись {{ data.pk }}
   {% elif '/delete/' in request.path %}
-    <h1>Удалить запись {{ data.pk }}</h1>
+    Удалить запись {{ data.pk }}
   {% else %}
-    <h1>Создать запись</h1>
-  {% endif %}
+    Создать запись
+  {% endif %}</h1>
 <div class="card col-4">
   <div class="card-header">
     Калькулятор ожидания дня рождения
   </div>
   <div class="card-body">
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {% if '/delete/' not in request.path %}
         {% bootstrap_form form %}

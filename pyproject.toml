@@ -11,6 +11,8 @@ packages = [{include = "acme_project"}]
 python = "^3.9.10"
 django = "3.2.16"
 django-bootstrap5 = "22.2"
+pillow = "9.3.0"
+django-cleanup = "^8.0.0"
 
 
 [tool.poetry.group.dev.dependencies]
