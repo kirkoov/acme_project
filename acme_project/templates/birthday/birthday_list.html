@@ -4,14 +4,13 @@
     <div class="row">
       <div class="col-2">
         {% if birthday.image %}
-          <img src="{{ birthday.image.url }}" height="100">
+           <a href="{{ birthday.image.url }}"><img src="{{ birthday.image.url }}" height="100"></a>
         {% endif %}
       </div>
 
       <div class="col-10">
         <div>
           {{ birthday.first_name }} {{ birthday.last_name }} - {{ birthday.birthday }}
-        }
         </div>
       <div>
         <a href="{% url 'birthday:edit' birthday.id %}">Изменить запись</a> |
