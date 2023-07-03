@@ -5,7 +5,9 @@ from . import views
 app_name = 'birthday'
 
 urlpatterns = [
-    path('', views.birthday, name='create'),
+    # path('', views.birthday, name='create'),  # Calc is shown
+    # No birthday calculation for now
+    path('', views.BirthdayCreateView.as_view(), name='create'),
     # path('list/', views.birthday_list, name='list'),
     path('list/', views.BirthdayListView.as_view(), name='list'),
     path('<int:pk>/edit/', views.birthday, name='edit'),
