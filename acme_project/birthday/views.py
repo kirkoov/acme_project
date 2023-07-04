@@ -1,12 +1,33 @@
 # from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
 from .forms import BirthdayForm
 from .models import Birthday
 
 from .utils import calculate_birthday_countdown
+
+
+class BirthdayMixin:
+    model = Birthday
+    form_class = BirthdayForm
+    template_name = 'birthday/birthday.html'
+    success_url = reverse_lazy('birthday:list')
+
+
+class BirthdayCreateView(BirthdayMixin, CreateView):
+    pass
+
+
+class BirthdayUpdateView(BirthdayMixin, UpdateView):
+    pass
+
+
+class BirthdayDeleteView(DeleteView):
+    model = Birthday
+    template_name = 'birthday/birthday_confirm_delete.html'
+    success_url = reverse_lazy('birthday:list')
 
 
 class BirthdayListView(ListView):
@@ -21,15 +42,6 @@ class BirthdayListView(ListView):
         context = super().get_context_data(**kwargs)
         context['try_for_fun'] = 'Hi from get_context_data()'
         return context
-
-
-class BirthdayCreateView(CreateView):
-    model = Birthday
-    # fields = '__all__'  # No validation for dates and non-Beatles we used b4:
-    # therefore use a form_class attr to restore the status quo
-    form_class = BirthdayForm
-    template_name = 'birthday/birthday.html'
-    success_url = reverse_lazy('birthday:list')
 
 
 def delete_birthday(request, pk):
