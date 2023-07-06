@@ -10,7 +10,8 @@
 
       <div class="col-10">
         <div>
-          {{ birthday.first_name }} {{ birthday.last_name }} - {{ birthday.birthday }}
+          {{ birthday }} - {{ birthday.birthday }}<br>
+          <a href="{% url 'birthday:detail' birthday.id %}">Сколько до дня рождения?</a>
         </div>
       <div>
         <a href="{% url 'birthday:edit' birthday.id %}">Изменить запись</a> |
@@ -23,6 +24,5 @@
     {% endif %}
   </div>
   {% endfor %}
-<small>{{ try_for_fun }}</small>
 {% include "includes/paginator.html" %}
 {% endblock %}
