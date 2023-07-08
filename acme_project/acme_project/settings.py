@@ -19,7 +19,8 @@ INSTALLED_APPS = [
     'birthday.apps.BirthdayConfig',
     'pages.apps.PagesConfig',
     'django_bootstrap5',
-    'django_cleanup.apps.CleanupConfig'  # should be placed last
+    # should be placed last as per https://pypi.org/project/django-cleanup/
+    'django_cleanup.apps.CleanupConfig'  # See right above!
 ]
 
 MIDDLEWARE = [
