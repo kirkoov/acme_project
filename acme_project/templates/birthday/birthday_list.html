@@ -7,17 +7,18 @@
            <a href="{{ birthday.image.url }}"><img src="{{ birthday.image.url }}" height="100"></a>
         {% endif %}
       </div>
-
       <div class="col-10">
         <div>
           {{ birthday }} - {{ birthday.birthday }}<br>
           <a href="{% url 'birthday:detail' birthday.id %}">Сколько до дня рождения?</a>
         </div>
-      <div>
-        <a href="{% url 'birthday:edit' birthday.id %}">Изменить запись</a> |
-        <a href="{% url 'birthday:delete' birthday.id %}">Удалить запись</a>
+      {% if birthday.author == user %}
+        <div>
+          <a href="{% url 'birthday:edit' birthday.id %}">Изменить запись</a> |
+          <a href="{% url 'birthday:delete' birthday.id %}">Удалить запись</a>
       </div>
-    </div>
+      {% endif %}
+      </div>
     {% if not forloop.last %}
       <!-- Отступ сверху (margin-top) в 30 px -->
       <hr class="mt-3">
