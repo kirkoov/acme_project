@@ -91,7 +91,7 @@ TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False  # When True, the Birthday update form won't show the date((
 
 USE_TZ = True
 

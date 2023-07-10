@@ -1,5 +1,6 @@
 # from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import (
     CreateView, DeleteView, DetailView, ListView, UpdateView
@@ -19,10 +20,22 @@ class BirthdayCreateView(LoginRequiredMixin, CreateView):
     model = Birthday
     form_class = BirthdayForm
 
+    def form_valid(self, form):  # Overrriding is for the sake on inserting
+        # the current user as the author of the new post/birthday under way.
+        form.instance.author = self.request.user
+        # Продолжить валидацию, описанную в форме:
+        return super().form_valid(form)
+
 
 class BirthdayUpdateView(LoginRequiredMixin, UpdateView):
     model = Birthday
     form_class = BirthdayForm
+
+    def dispatch(self, request, *args, **kwargs):
+        get_object_or_404(Birthday, pk=kwargs['pk'], author=request.user)
+        # Если объект был найден, то вызываем родительский метод,
+        # чтобы работа CBV продолжилась:
+        return super().dispatch(request, *args, **kwargs)
 
 
 class BirthdayDeleteView(LoginRequiredMixin, DeleteView):
