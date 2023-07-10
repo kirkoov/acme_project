@@ -43,6 +43,12 @@ class BirthdayDeleteView(LoginRequiredMixin, DeleteView):
     model = Birthday
     success_url = reverse_lazy('birthday:list')
 
+    def dispatch(self, request, *args, **kwargs):
+        get_object_or_404(Birthday, pk=kwargs['pk'], author=request.user)
+        # Если объект был найден, то вызываем родительский метод,
+        # чтобы работа CBV продолжилась:
+        return super().dispatch(request, *args, **kwargs)
+
 
 class BirthdayListView(ListView):
     model = Birthday

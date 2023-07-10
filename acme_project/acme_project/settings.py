@@ -7,7 +7,12 @@ SECRET_KEY = 'django-insecure-m&$lzdzkutvrbr5vt=jpm)'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    # 'acme.not',
+    # 'www.acme.not',
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -18,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'birthday.apps.BirthdayConfig',
     'pages.apps.PagesConfig',
+    'core.apps.CoreConfig',
     'django_bootstrap5',
     # should be placed last as per https://pypi.org/project/django-cleanup/
     'django_cleanup.apps.CleanupConfig'  # See right above!
