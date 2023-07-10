@@ -112,3 +112,5 @@ EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'pages:homepage'
+
+CSRF_FAILURE_VIEW = 'core.views.csrf_failure'
