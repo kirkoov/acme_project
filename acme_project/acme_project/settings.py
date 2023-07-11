@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'core.apps.CoreConfig',
     'django_bootstrap5',
+    'debug_toolbar',
     # should be placed last as per https://pypi.org/project/django-cleanup/
     'django_cleanup.apps.CleanupConfig'  # See right above!
 ]
@@ -37,6 +38,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'acme_project.urls'
@@ -114,3 +116,8 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'pages:homepage'
 
 CSRF_FAILURE_VIEW = 'core.views.csrf_failure'
+
+# For DjDT to know what IPs to process requests from
+INTERNAL_IPS = [
+    '127.0.0.1',
+]

@@ -20,6 +20,7 @@ django-stubs = "^4.2.1"
 mypy = "^1.3.0"
 flake8 = "^6.0.0"
 ruff = "^0.0.272"
+django-debug-toolbar = "3.8.1"
 
 [tool.mypy]
 mypy_path = "acme_project"
