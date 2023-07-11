@@ -3,10 +3,7 @@
   ID записи: {{ object.id }}
   <hr>
   {% if birthday.image %}
-    <div>
-      <!-- Картинку сделаем побольше, чем на странице list/: высотой 200px -->
-      <img src="{{ birthday.image.url }}" height="200">
-    </div>
+    <div><img src="{{ birthday.image.url }}" height="200"></div>
   {% endif %}
   <h2>Привет, {{ object }}</h2>
   {% if birthday_countdown == 0 %}
