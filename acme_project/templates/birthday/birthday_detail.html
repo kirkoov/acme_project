@@ -12,7 +12,7 @@
   {% else %}
     <p>Осталось дней до дня рождения: {{ birthday_countdown }}!</p>
   {% endif %}
-  {% if congratulations|length > 0 %}
+
   <div>
     <h3>Поздравления:</h3>
     <!-- Если пользователь залогинен, отображаем форму -->
@@ -26,6 +26,7 @@
       </form>
     {% endif %}
     <!-- В цикле перебираем и выводим поздравления -->
+    {% if congratulations|length > 0 %}
     {% for congratulation in congratulations %}
       <hr>
       <p>
@@ -34,6 +35,6 @@
       </p>
       <p><b>{{ congratulation.text }}</b></p>
     {% endfor %}
+    {% endif %}
   </div>
-  {% endif %}
 {% endblock content %}
