@@ -53,8 +53,16 @@ class BirthdayDeleteView(LoginRequiredMixin, DeleteView):
 class BirthdayListView(ListView):
     model = Birthday
     # template_name = 'birthday/birthday_list.html'
+    # По умолчанию этот класс выполняет запрос
+    # queryset = Birthday.objects.all(), но мы его переопределим,
+    # чтобы «снизить стоимость» получения объектов, связанных
+    # «многие-ко-многим» (birthdays-tags), а заодно сократим и запросы
+    # по методу «один-ко-многим» (Birthday и User), используя
+    # select_related, = было 15 запросов, стало 3 - при 11 записях в БД!
+    queryset = Birthday.objects.prefetch_related(
+        'tags').select_related('author')
     ordering = 'id'
-    paginate_by = 3
+    paginate_by = 10
 
 
 class BirthdayDetailView(DetailView):
